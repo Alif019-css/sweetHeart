@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffe0e9, #fce4ec);
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 40px;
+      color: #d6336c;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      background: #e63946;
+      position: relative;
+      margin: 30px auto;
+      animation: beat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 100px;
+      height: 90px;
+      background: #e63946;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: pink;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px); }
+      100% { transform: translateY(100vh); }
+    }
+
+    #secretMessage {
+      display: none;
+      font-size: 1em;
+      margin-top: 20px;
+      background: #fff0f5;
+      color: #444;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background: #d6336c;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #b02a55;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>For You ❤️</h1>
+  <div class="heart"></div>
+
+  <p>
+    Tumi amar jibon-e ekta anmull upohar.<br>
+    Tomake bhalobashi... protidin, protimoment-e. 🥰
+  </p>
+
+  <button onclick="showMessage()">Click to read something special</button>
+
+  <div id="secretMessage">
+    hey kmn acho tmi and asha kri vlo acho. <br>
+    ami just try krtesi j eto din coding related ki ki shikhlm... <br>
+    so choto ekta code make krlm and eta tmi tmk tokhon pathabo jokhn tmr mood khrp ba amr upr rag aisha thko. <br>
+    myb tmi khushi hoiya jao.. 🥹💖<br>
+    <b>Date: 5/17</b>
+  </div>
+
+  <audio controls autoplay loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function showMessage() {
+      const msg = document.getElementById("secretMessage");
+      msg.style.display = "block";
+    }
+
+    function createPetal() {
+      const petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.style.left = Math.random() * window.innerWidth + "px";
+      petal.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 5000);
+    }
+
+    setInterval(createPetal, 200);
+  </script>
+</body>
+</html>
